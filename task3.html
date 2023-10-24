@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Color Picker</title>
+        <style>
+            .mainEle {
+                padding-top: 80px;
+            }
+            .color-picker {
+                display: inline-block;
+            }
+
+            .color-picker button {
+                padding: 5px;
+                width: 80px;
+                height: 50px;
+                background-color: #555;
+                color: #fff;
+                border: none;
+                cursor: pointer;
+            }
+
+            .color-picker .color-list {
+                display: none;
+                list-style: none;
+                padding: 0;
+                margin: 10px 0;
+            }
+
+            .color-picker .color-item {
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                margin-right: 5px;
+                cursor: pointer;
+            }
+
+            h1 {
+                text-align: center;
+                font-family: 'Times New Roman', Times, serif;
+            }
+        </style>
+    </head>
+    <body id="colorBg">
+        <h1>Task 3</h1>
+        <div align="center" class="mainEle">
+            <div class="color-picker">
+                <button id="colorPickerBtn">Pick a color</button>
+                <ul id="colorList" class="color-list"></ul>
+            </div>
+        </div>
+        
+
+        <script>
+            const colors = ['white', 'red', 'green', 'blue', 'yellow', 'orange', 'purple', 'Tomato', 'Orange', 'DodgerBlue', 'MediumSeaGreen', 'Gray', 'SlateBlue', 'Violet', 'LightGray'];
+
+            const colorPickerBtn = document.getElementById('colorBg');
+            const colorList = document.getElementById('colorList');
+
+            colorPickerBtn.addEventListener('click', function() {
+            colorList.style.display = 'block';
+            });
+
+            colors.forEach(function(color) {
+            const colorItem = document.createElement('li');
+            colorItem.classList.add('color-item');
+            colorItem.style.backgroundColor = color;
+            colorItem.style.boxShadow = '1px 2px 9px #454';
+
+            colorItem.addEventListener('click', function() {
+                colorPickerBtn.style.backgroundColor = color;
+                colorList.style.display = 'none';
+            });
+
+            colorList.appendChild(colorItem);
+            });
+        </script>
+    </body>
+</html>

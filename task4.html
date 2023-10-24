@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>User Records</title>
+    <style>
+        table {
+        border-collapse: collapse;
+        width: 100%;
+        }
+
+        th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        }
+
+        th {
+        background-color: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+        }
+    </style>
+    </head>
+
+    <body>
+        <h1>Task 4</h1>
+        <div>
+            <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Profile Pic</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Gender</th>
+                    <th>E-mail</th>
+                    <th>Username</th>
+                    <th>Domain</th>
+                    <th>IP</th>
+                    <th>University</th>
+                  </tr>
+                  </thead>
+                  <tbody id="tblData">
+    
+                  </tbody>
+            </table>
+        </div>
+
+
+
+        <script>
+            fetch("https://dummyjson.com/users")
+                .then((res) => {
+                    res.json()
+                        .then((data) => {
+                        console.log(data.users);
+                        if (data.users.length > 0) {
+                            var temp = "";
+                            data.users.forEach((itemData) => {
+                                temp += "<tr>";
+                                temp += "<td>" + itemData.id + "</td>";
+                                temp += "<td> <img src="+itemData.image+" style=\"width: 55px;width: 55px;\"></td>";
+                                temp += "<td>" + itemData.firstName + "</td>";
+                                temp += "<td>" + itemData.lastName + "</td>";
+                                temp += "<td>" + itemData.gender + "</td>";
+                                temp += "<td>" + itemData.email + "</td>";
+                                temp += "<td>" + itemData.username + "</td>";
+                                temp += "<td>" + itemData.domain + "</td>";
+                                temp += "<td>" + itemData.ip + "</td>"
+                                temp += "<td>" + itemData.university + "</td></tr>";
+                            });
+                            document.getElementById('tblData').innerHTML = temp;
+                        }
+                    })
+                })
+        </script>
+    </body>
+</html>
